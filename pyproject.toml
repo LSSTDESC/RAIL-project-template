@@ -27,3 +27,27 @@ build-backend = "setuptools.build_meta"
 
 [tool.setuptools_scm]
 write_to = "_version.py"
+
+[tool.pylint]
+disable = [
+    "abstract-method",
+    "invalid-name",
+    "too-many-statements",
+    "missing-module-docstring",
+    "missing-class-docstring",
+    "missing-function-docstring",
+    "too-few-public-methods",
+    "duplicate-code",
+    "use-dict-literal",
+    "broad-exception-caught",
+]
+max-line-length = 110
+max-locals = 50
+max-branches = 25
+max-public-methods = 50
+
+[tool.pytest.ini_options]
+addopts = [
+    "--cov=rail",
+    "--cov-report=html"
+]
