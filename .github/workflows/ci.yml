@@ -56,7 +56,7 @@ jobs:
     - name: pylint checks
       run: |
         cd ../test/${{ matrix.copier_config.foldername }}
-        python -m pylint --recursive=y ./src/rail --rcfile=./src/rail/${{ matrix.copier_config.package_name }}
+        python -m pylint --recursive=y ./src/rail
    
     - name: Tests
       run: |
