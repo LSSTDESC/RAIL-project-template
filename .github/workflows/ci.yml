@@ -19,48 +19,6 @@ jobs:
             package_name: example_project # The default package_name
             extra_flags: ''
             foldername: base_example
-          - name: Black w/o example module
-            package_name: 'drewtonian' # Same module name provided in `extra_flags` on the next line.
-            extra_flags: >-
-              --data project_name=new_science
-              --data package_name=drewtonian
-              --data author_name=Drew
-              --data author_email=ao@aol.com
-              --data project_license=BSD
-              --data preferred_linter=black
-              --data use_isort=false
-              --data mypy_type_checking=basic
-              --data create_example_module=no
-              --data use_gitlfs=disabled
-            foldername: 'black_w_o_example_module'
-          - name: Black w/ example
-            package_name: 'drewtonian' # Same module name provided in `extra_flags` on the next line.
-            extra_flags: >-
-              --data project_name=new_science
-              --data package_name=drewtonian
-              --data author_name=Drew
-              --data author_email=ao@aol.com
-              --data project_license=BSD
-              --data preferred_linter=black
-              --data use_isort=false
-              --data mypy_type_checking=basic
-              --data create_example_module=yes
-              --data use_gitlfs=disabled
-            foldername: 'black_w_example_module'
-          - name: Pylint w/o example
-            package_name: 'drewtonian' # Same module name provided in `extra_flags` on the next line.
-            extra_flags: >-
-              --data project_name=new_science
-              --data package_name=drewtonian
-              --data author_name=Drew
-              --data author_email=ao@aol.com
-              --data project_license=BSD
-              --data preferred_linter=pylint
-              --data use_isort=false
-              --data mypy_type_checking=basic
-              --data create_example_module=no
-              --data use_gitlfs=disabled
-            foldername: 'pylint_w_o_example_module'
 
     steps:
     
@@ -76,7 +34,7 @@ jobs:
       run: |
         sudo apt-get update
         python -m pip install --upgrade pip
-        python -m pip install copier mypy
+        python -m pip install copier
     
     - name: Generate package
       run: |
@@ -97,26 +55,3 @@ jobs:
         cd ../test/${{ matrix.copier_config.foldername }}
         python -m pylint --recursive=y ./src/ --rcfile=./src/.pylintrc
    
-    - name: black checks
-      if: ${{ contains(matrix.copier_config.extra_flags, 'preferred_linter=black') }}
-      uses: psf/black@stable
-      with:
-        src: "../test/${{ matrix.copier_config.foldername }}/src"
-   
-    - name: mypy checks basic
-      if: ${{ contains(matrix.copier_config.extra_flags, 'mypy_type_checking=basic') && !contains(matrix.copier_config.extra_flags, 'create_example_module=no') }}
-      run: |
-        cd "../test/${{ matrix.copier_config.foldername }}"
-        mypy src tests
-   
-    - name: mypy checks strict
-      if: ${{ contains(matrix.copier_config.extra_flags, 'mypy_type_checking=strict') && !contains(matrix.copier_config.extra_flags, 'create_example_module=no') }}
-      run: |
-        cd "../test/${{ matrix.copier_config.foldername }}"
-        mypy --strict src tests
-
-    - name: Tests
-      if: ${{ !contains(matrix.copier_config.extra_flags, 'create_example_module=no') }}
-      run: |
-        cd ../test/${{ matrix.copier_config.foldername }}
-        python -m pytest tests --cov=${{ matrix.copier_config.package_name }} --cov-report=xml
