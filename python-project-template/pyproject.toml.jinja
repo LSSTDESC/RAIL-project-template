@@ -43,6 +43,10 @@ namespaces = true
 testpaths = [
     "tests",
 ]
+addopts = [
+    "--cov=rail",
+    "--cov-report=html"
+]
 
 [tool.pylint]
 disable = [
@@ -61,9 +65,3 @@ max-line-length = 110
 max-locals = 50
 max-branches = 25
 max-public-methods = 50
-
-[tool.pytest.ini_options]
-addopts = [
-    "--cov=rail",
-    "--cov-report=html"
-]
