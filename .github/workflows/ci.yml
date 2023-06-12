@@ -53,5 +53,5 @@ jobs:
       if: ${{ contains (matrix.copier_config.name, 'Base') }}
       run: |
         cd ../test/${{ matrix.copier_config.foldername }}
-        python -m pylint --recursive=y ./src/ --rcfile=./src/.pylintrc
+        python -m pylint --recursive=y ./src/
    
