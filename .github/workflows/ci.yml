@@ -60,5 +60,6 @@ jobs:
    
     - name: Tests
       run: |
+        if: ${{ contains(matrix.copier_config.extra_flags, 'create_example_module=yes') }}
         cd ../test/${{ matrix.copier_config.foldername }}
         python -m pytest tests --cov=rail/${{ matrix.copier_config.package_name }} --cov-report=xml
