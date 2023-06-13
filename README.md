@@ -29,7 +29,7 @@ Choose where you would like to create your new project, and call copier with the
 
 ## Configuring your repository
 
-After you've create a project with this template and pushed it to GitHub, a small
+After you've created a project with this template and pushed it to GitHub, a small
 amount of additional set up in the repository will allow you to take full advantage
 of the features that the template offers.
 
