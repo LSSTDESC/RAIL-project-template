@@ -56,7 +56,7 @@ and save it as repository secret for it to work.
 
 These instructions explain how to create a Personal Access Token: https://github.com/actions/add-to-project#creating-a-pat-and-adding-it-to-your-repository
 
-Once your token is created save it as a repository secret with the name: ``ADD_TO_PROJECT_PAT``.
+Once your token is created save it as a **repository secret** with the name: ``ADD_TO_PROJECT_PAT``.
 
 ## Contributing to the Template
 
