@@ -1,34 +1,16 @@
 ---
 name: Bug report
-about: Create a report to help us improve
+about: Tell us about a problem to fix
 title: 'Short description'
 labels: 'bug'
 assignees: ''
 
 ---
-
-**Describe the bug**
-
-A clear and concise description of what the bug is.
-
-
-**Error message or stack trace**
-
-What error output (if any) was reported?
-
-**Extra information**
-
-Other information to help with debugging such as:
-
-- Expected behavior
-- Possible solutions
-- Screenshots
-- Environment information
-- Information about data necessary to reproduce the issue
+**Bug report**
 
 **Before submitting**
 Please check the following:
 
-- [ ] I have described the situation in which the bug arose.
-- [ ] I have included the error message or evidence of unexpected behavior as well as the code that triggers it so others can reproduce the problem.
+- [ ] I have described the situation in which the bug arose, including what code was executed, information about my environment, and any applicable data others will need to reproduce the problem.
+- [ ] I have included available evidence of the unexpected behavior (including error messages, screenshots, and/or plots) as well as a descriprion of what I expected instead.
 - [ ] If I have a solution in mind, I have provided an explanation and/or pseudocode and/or task list.
