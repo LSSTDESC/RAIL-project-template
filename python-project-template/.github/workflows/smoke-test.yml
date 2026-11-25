@@ -1,6 +1,4 @@
-# This workflow will run daily at 06:45.
-# It will install Python dependencies and run tests with a variety of Python versions.
-
+---
 name: Unit test smoke test
 
 on:
@@ -28,7 +26,7 @@ jobs:
       - name: Install rail
         uses: ./.github/actions/install-rail
         with:
-          python-version: ${{ matrix.python-version }}	
+          python-version: ${{ matrix.python-version }}
       - name: Run unit tests with pytest
         run: |
           python -m pytest tests

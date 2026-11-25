@@ -1,13 +1,11 @@
-# This workflow will install Python dependencies, then perform static linting analysis.
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
-
+---
 name: Lint
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build:
@@ -27,7 +25,7 @@ jobs:
       - name: Install rail
         uses: ./.github/actions/install-rail
         with:
-          python-version: ${{ matrix.python-version }}	
+          python-version: ${{ matrix.python-version }}
       - name: Analyze code with linter
         run: |
           pylint -rn -sn --recursive=y ./src

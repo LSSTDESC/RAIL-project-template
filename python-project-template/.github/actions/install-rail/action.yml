@@ -1,3 +1,4 @@
+---
 name: 'Install rail'
 description: >
   Install rail_bae and it dependencies using install_rail.py from
@@ -25,7 +26,7 @@ runs:
           --install-conda mamba \
           --env-name rail_ci \
           --rail-packages None \
-	  --python-version {{ $inputs.python-version }} \	  
+          --python-version {{ $inputs.python-version }} \
           --install-devtools no
 
     - name: Add conda environment to PATH

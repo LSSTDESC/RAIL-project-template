@@ -1,11 +1,4 @@
-# This workflow will upload a Python Package using Twine when a release is created
-# For more information see: https://github.com/pypa/gh-action-pypi-publish#trusted-publishing
-
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
+---
 name: Upload Python Package
 
 on:
@@ -19,7 +12,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     permissions:
-      id-token: write    
+      id-token: write
     strategy:
       matrix:
         python-version: ['3.12']
@@ -35,7 +28,7 @@ jobs:
       - name: Install rail
         uses: ./.github/actions/install-rail
         with:
-          python-version: ${{ matrix.python-version }}	
+          python-version: ${{ matrix.python-version }}
       - name: Run unit tests with pytest
         run: |
           python -m pytest tests
