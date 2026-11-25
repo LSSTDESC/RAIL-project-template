@@ -17,21 +17,33 @@ permissions:
 
 jobs:
   deploy:
-
     runs-on: ubuntu-latest
     permissions:
-      id-token: write
+      id-token: write    
+    strategy:
+      matrix:
+        python-version: ['3.12']
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.12'
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install build
-    - name: Build package
-      run: python -m build
-    - name: Publish package
-      uses: pypa/gh-action-pypi-publish@release/v1
+      - uses: actions/checkout@v3
+        with:
+          fetch-tags: true
+          fetch-depth: 0
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install rail
+        uses: ./.github/actions/install-rail
+        with:
+          python-version: ${{ matrix.python-version }}	
+      - name: Run unit tests with pytest
+        run: |
+          python -m pytest tests
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install build
+      - name: Build package
+        run: python -m build
+      - name: Publish package
+        uses: pypa/gh-action-pypi-publish@release/v1
